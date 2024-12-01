@@ -1,0 +1,12 @@
+input STR
+input SSTR
+C = 0
+LSTR = STR.length
+LSSTR = SSTR.length
+loop COUNT from 0 to LSTR - LSSTR
+ TSTR = STR.substring(COUNT, COUNT + LSSTR)
+  if TSTR == SSTR then
+  C = C + 1
+  end if
+end loop
+output C

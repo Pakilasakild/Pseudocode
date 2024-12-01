@@ -1,0 +1,12 @@
+input STR
+FLAG = true
+loop COUNT from 1 to STR.length
+if STR[STR.length - COUNT] != STR[COUNT-1] then
+FLAG = false
+end if
+end loop
+if FLAG == true then
+output "TRUE"
+else 
+output "FALSE"
+end if

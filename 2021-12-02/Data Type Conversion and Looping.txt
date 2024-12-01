@@ -1,0 +1,12 @@
+input STR
+SUM = ""
+loop COUNT from 0 to STR.length-1
+if STR[COUNT] != " " AND STR[COUNT] != "," then
+SUM = SUM + STR[COUNT]
+end if
+end loop
+output SUM
+
+
+
+//neįsivaizduoju kaip paverst į integer :)
