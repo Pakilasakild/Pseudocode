@@ -1,0 +1,77 @@
+1. 
+
+A = new Array(5)
+loop I from 0 to 4
+ input A[I]
+end loop
+MIN = A[0]
+MAX = A[0]
+N = (A[0]+A[1]+A[2]+A[3]+A[4])/5
+loop I from 0 to 5
+ if A[I] < MIN then
+  MIN = A[I]
+ end if
+ if A[I] > MAX then
+  MAX = A[I]
+ end if
+ end loop
+output N
+output MIN
+output MAX
+
+2.
+
+A = new Array(3)
+loop I from 0 to 2
+ input A[I]
+end loop
+loop I from 0 to 1
+ loop J from 0 to 1
+if A[J] > A[J+1] then
+ TEMP = A[J+1]
+ A[J+1] = A[J]
+ A[J] = TEMP
+end if
+end loop
+end loop
+output A
+
+3. 
+
+N = 0
+SUM = 0
+loop while true
+input N
+if N == -1 then
+ break
+end if 
+SUM = SUM + N
+end loop
+output SUM
+
+4.
+
+input N
+ST = N * 0.04
+CT = N * 0.02
+output N
+output ST
+output CT
+output N+ST+CT
+
+5.
+
+// 400/(40/10)
+//mathematics
+
+
+C = input("How many cookies?")
+S = input ("How many servings?")
+CAL = input ("How many calories in a serving?")
+E = input ("How many cookies did you eat?")
+
+output "Number of cookies in a serving: " , C/S
+output "Number of calories in a serving: " , CAL
+output "Number of calories in a cookie: " , CAL/C
+output "Number of cookies you ate: " , E
+output "Number of calories you ate: " , E * (CAL/C)
