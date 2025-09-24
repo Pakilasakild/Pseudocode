@@ -1,0 +1,21 @@
+NNAMES = new.Collection()
+SURNAMES = new.Collection()
+NAMES.resetNext()
+loop while NAMES.hasNext()
+ SURNAMES.addItem(NAMES.getNext())
+ NNAMES.addItem(NAMES.getNext())
+loop end
+
+
+loop I from 0 to 599
+ loop J from 0 to 599
+  if SURNAMES.get(J) < SURNAMES.get(J+1) then
+   TEMPS = SURNAMES.get(J)
+   TEMPN = NNAMES.get(J)
+   SURNAMES.set(J, SURNAMES.get(J+1))
+   NNAMES.set(J, NNAMES.get(J+1))
+   SURNAMES.set(J+1, TEMPS)
+   NNAMES.set(J+1, NNAMES)
+  end if
+ end loop
+end loop
