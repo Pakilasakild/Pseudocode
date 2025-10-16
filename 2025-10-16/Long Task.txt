@@ -1,0 +1,134 @@
+MANAGERS = ["Andrius", "Jon*as", "Ar-ijus", "Ie_va", "Ka+rolis"]
+QUARTERTARGETS = [[30000, 28000, 32000, 30000], [25000, 24000, 26000, 25000], [23000, 24000, 24000, 24000], [27000, 27000, 28000, 29000] , [26000, 26000, 26000, 27000]]
+QUARTERSALES = [[21000, 27000, 29000, 30500], [35000, 24000, 22000, 23000], [13000, 14000, 14000, 8000], [27500, 17000, 48000, 49000], [46000, 16000, 36000, 7000]]
+
+output "Managers:"
+MANAGERS = fixnames(MANAGERS)
+output MANAGERS
+
+ANNUALTARGETS = sumquarter(QUARTERTARGETS)
+ANNUALSALES = sumquarter(QUARTERSALES)
+
+output "Managers who did not meet qouta:"
+
+loop COUNT from 0 to 5
+ if ANNUALSALES[COUNT] < ANNUALTARGETS[COUNT] then
+  output MANAGERS[COUNT]
+ end if
+end loop
+
+COUNTER = 0
+BONUSESM
+BONUSESS
+
+output "Managers with bonuses:"
+
+loop COUNT from 0 to 5
+ if ANNUALSALES[COUNT] > ANNUALTARGETS[COUNT] then
+  BONUSESM[COUNTER] = MANAGERS[COUNT]
+  BONUSESS[COUNTER] = ANNUALSALES[COUNT]  
+  output MANAGERS[COUNT]
+ end if
+end loop
+
+SORTEDMANAGERS = sortman(BONUSESM, BONUSESS)
+output "Managers with bonuses, in descending order by bonus size:"
+loop COUNT from 0 to 5
+ output SORTEDMANAGERS[COUNT]
+end loop
+
+COMPANNSUMTARG = sum(ANNUALTARGETS)
+COMPANNSUMSALE = sum(ANNUALSALES)
+
+output "Company target sum: ", COMPANNSUMTARG
+output "Company sale sum: ", COMPANNSUMSALE
+
+
+POSITIONS = maxquarter(QUARTERSALES)
+output "Manager with highest quarter:"
+output MANAGERS[POSITIONS[0]], " Quarter ", POSITIONS[1] + 1
+
+AVGSALES = avgmanqsales(ANNUALSALES)
+
+output "Average manager sales: "
+
+loop COUNT from 0 to 5
+ output MANAGERS[COUNT], AVGSALES[COUNT]
+end loop
+
+
+
+
+
+// Methods below
+// Methods below
+// Methods below
+// Methods below
+// Methods below
+
+fixnames(MANAGERS)
+ MANAGER
+ MANAGER[1] = MANAGERS[1]
+ MANAGER[1] = MANAGERS[1].SubStr(0, 3) + MANAGERS[1].SubStr(4, 6)
+ MANAGER[2] = MANAGERS[2].SubStr(0, 2) + MANAGERS[2].SubStr(3, 7)
+ MANAGER[3] = MANAGERS[3].SubStr(0, 2) + MANAGERS[3].SubStr(3, 5)
+ MANAGER[4] = MANAGERS[4].SubStr(0, 2) + MANAGERS[4].SubStr(3, 8)
+ return MANAGER
+endfixnames
+
+sumquarter(DATA)
+ SUM
+ loop COUNT from 0 to 5
+  loop COUNTJ from 0 to 4
+   SUM[COUNT] += DATA[COUNT][COUNTJ]
+  end loop
+ end loop
+ return SUM
+endsumquarter
+
+sortman(MANAGERS, ANNUALSALES)
+ loop COUNT from 0 to MANAGERS.
+  loop COUNTJ from 0 to 4
+   if ANNUALSALES[COUNTJ] < ANNUALSALES[COUNTJ+1] then
+    TEMPM = MANAGERS[COUNTJ]
+	TEMPS = ANNUALSALES[COUNTJ]
+	MANAGERS[COUNTJ] = MANAGERS[COUNTJ+1]
+	ANNUALSALES[COUNTJ] = ANNUALSALES[COUNTJ+1]
+	MANAGERS[COUNTJ+1] = TEMPM
+	ANNUALSALES[COUNTJ+1] = TEMPS
+   end if 
+  end loop
+ end loop
+ return MANAGERS
+endsortman
+
+
+sum(ARRAY)
+ SUM = 0
+ loop COUNT from 0 to ARRAY.length - 1
+  SUM += ARRAY[COUNT]
+ end loop
+ return SUM
+endsum
+
+maxquarter(QUARTERSALES)
+ MAXPOS
+ MAX = 0
+ loop COUNT from 0 to 5
+  loop COUNTJ from 0 to 4
+   if MAX < QUARTERSALES[COUNT][COUNTJ] then
+    MAX = QUARTERSALES[COUNT][COUNTJ]
+	MAXPOS = [COUNT, COUNTJ]
+   end if
+  end loop
+ end loop
+ return MAXPOS
+endmaxquarter
+
+avgmanqsales(ANNUALSALES)
+ AVGSALES
+ loop COUNT from 0 to 5
+  AVGSALES[COUNT] = ANNUALSALES / 4
+ end loop
+ return AVGSALES
+endavgmanqsales
