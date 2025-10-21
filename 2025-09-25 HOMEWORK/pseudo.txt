@@ -23,21 +23,20 @@ end loop
 
 
 method binarySearch(SEARCHINGSURNAME, SURNAMES)
-HIGH = 599
-LOW = 0
-MID = HIGH / 2
+ HIGH = 599
+ LOW = 0
+ MID = HIGH / 2
 
-loop while SURNAMES.get(MID) ≠ SEARCHINGSURNAME
- if SURNAMES.get(MID) > SEARCHINGSURNAME then
-  HIGH = MID
-  MID = MID / 2
- end if
- else if SURNAMES.get(MID) < SEARCHINGSURNAME then
-  LOW = MID
-  MID = (LOW + HIGH) / 2
- end if
- else
-   output SURNAMES.get(MID)
- end if
-end loop
+ loop while SURNAMES.get(MID) ≠ SEARCHINGSURNAME
+  if SURNAMES.get(MID) > SEARCHINGSURNAME then
+   HIGH = MID
+   MID = MID / 2
+  end if
+  else if SURNAMES.get(MID) < SEARCHINGSURNAME then
+   LOW = MID
+   MID = (LOW + HIGH) / 2
+  end if
+ end loop
+ return SURNAMES.get(MID)
+end method
  
