@@ -1,0 +1,48 @@
+1. 
+
+DICEDIAL = new Array()
+SUM = 0
+loop COUNT from 0 to 7
+ loop COUNTJ from 0 to 3
+  SUM += DICEDIAL[COUNT][COUNTJ]
+ end loop
+end loop
+
+2. 
+
+method DuplicateNum (DICEDIAL, R)
+ loop COUNT from 0 to 2
+  if DICEDIAL[R][COUNT] == DICEDIAL[R][COUNT + 1] then
+   return DICEDIAL[R][COUNT]
+  end if
+ end loop
+end method
+
+3.
+
+method highestRT (DICEDIAL)
+ HI = new Array()
+ C = 0
+ HS = 0
+ loop COUNT from 0 to 7
+ SUM = rowSum(DICEDIAL, COUNT)
+   if HS == SUM then
+    HI[C] = COUNT
+	C += 1
+   end if
+ end loop
+ output HS
+ loop COUNT from 0 to C
+  output HI[COUNT]
+ end loop
+end method
+	
+	
+	
+method rowSum(DICEDIAL, R)
+ SUM = 0
+ loop COUNTJ from 0 to 3
+  SUM += DICEDIAL[R][COUNTJ]
+ end loop
+ return SUM
+end method
