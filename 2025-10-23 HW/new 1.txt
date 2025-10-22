@@ -1,0 +1,85 @@
+N = input
+SMILE[N][N]
+loop COUNT from 0 to N-1
+ loop COUNTJ from 0 to N-1
+  SMILE[COUNT][COUNTJ] = input
+ end loop
+end loop
+
+OP = input
+
+if OP == "rotate 90" then
+ ROTATED[N][N] = rt90(SMILE, N)
+ loop COUNT from 0 to N-1
+  loop COUNTJ from 0 to N-1
+   output ROTATED[COUNT][COUNTJ] + " "
+  end loop
+ end loop
+end if
+
+else if OP == "rotate 180" then
+ ROTATED[N][N] = rt90(rt90(SMILE, N), N)
+ loop COUNT from 0 to N-1
+  loop COUNTJ from 0 to N-1
+   output ROTATED[COUNT][COUNTJ] + " "
+  end loop
+ end loop
+end if
+else if OP == "rotate 270" then
+ ROTATED[N][N] = rt90(rt90(rt90(SMILE, N), N), N)
+ loop COUNT from 0 to N-1
+  loop COUNTJ from 0 to N-1
+   output ROTATED[COUNT][COUNTJ] + " "
+  end loop
+ end loop
+end if
+
+else if OP == "flip horizontal" then
+ ROTATED[N][N] = flipHor(SMILE, N)
+ loop COUNT from 0 to N-1
+  loop COUNTJ from 0 to N-1
+   output ROTATED[COUNT][COUNTJ] + " "
+  end loop
+ end loop
+end if
+
+else if OP == "flip vertical" then
+ ROTATED[N][N] = flipVert(SMILE, N)
+ loop COUNT from 0 to N-1
+  loop COUNTJ from 0 to N-1
+   output ROTATED[COUNT][COUNTJ] + " "
+  end loop
+ end loop
+end if
+
+
+
+method rt90(SMILE, N)
+ ROTATED[N][N]
+ loop COUNT from 0 to N-1
+  loop COUNTJ from 0 to N-1
+   ROTATED[COUNTJ][N-1-COUNT] = SMILE[COUNT][COUNTJ]
+  end loop
+ end loop
+ return ROTATED
+end method
+
+method flipHori(SMILE, N)
+ ROTATED[N][N]
+ loop COUNT from 0 to N-1
+  loop COUNTJ from 0 to N-1
+   ROTATED[N-1-COUNT][COUNTJ] = SMILE[COUNT][COUNTJ]
+  end loop
+ end loop
+ return ROTATED
+end method
+
+method flipVert(SMILE, N)
+ ROTATED[N][N]
+ loop COUNT from 0 to N-1
+  loop COUNTJ from 0 to N-1
+   ROTATED[COUNT][N-1-COUNTJ] = SMILE[COUNT][COUNTJ]
+  end loop
+ end loop
+ return ROTATED
+end method
