@@ -1,0 +1,57 @@
+a)
+
+C = 0
+
+loop I from 0 to 639
+ if (PLAYERS[3][I] == "Tokyo") then
+  C = C + 1
+  output PLAYERS[2][I]
+ end if
+end loop
+
+output C
+
+
+b)
+
+method Players (PLAYERS, MATCH)
+PL = new Array(2)
+ VSLOC
+ loop I from 0 to MATCH.Length()-1
+  if (MATCH[I] == "v" AND MATCH[I+1] == "s") then
+   VSLOC = I
+  end if
+ end loop
+ PL[0] = MATCH.SubStr(0, VSLOC-2)
+ PL[1] = MATCH.SubStr(VSLOC+3, MATCH.Length()-VSLOC-2)
+ return PL
+end method
+
+method Ready (PLAYERS, MATCHQUEUE)
+ loop while NOT MATCHQUEUE.isEmpty()
+  MATCH = MATCHQUEUE.dequeue()
+  PL = Players(PLAYERS, MATCH)
+  P1EX = 0
+  P2EX = 0
+  loop I from 0 to 639
+   if (PL[0] == PLAYERS[2][I]) then
+    P1EX = 1
+   end if
+   if (PL[1] == PLAYERS[2][I]) then
+    P2EX = 1
+   end if
+  end loop
+  if (P1EX == 1 AND P2EX == 1) then
+   output "READY: " + MATCH
+  else 
+   output "RESCHEDULE: " + MATCH
+  end if
+ end loop
+end method
+
+
+
+
+
+
+Ready(PLAYERS, MATCHQUEUE)
