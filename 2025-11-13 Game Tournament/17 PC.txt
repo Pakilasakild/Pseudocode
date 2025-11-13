@@ -55,3 +55,57 @@ end method
 
 
 Ready(PLAYERS, MATCHQUEUE)
+
+
+d)
+method CheckEmail (EMAIL)
+ TEST = 0
+ ATLOC
+ loop I from 0 to EMAIL.Length()-1
+  if (EMAIL[I] == "@") then
+   ATLOC = I
+   TEST = TEST + 1
+  end if
+ end loop
+ 
+ loop I from ATLOC to EMAIL.Length()-1
+  if (EMAIL[I] == ".") then
+   ATLOC = I
+   TEST = TEST + 1
+   I = EMAIL.Length()-1
+  end if
+ end loop
+ 
+ DOMAIN = EMAIL.SubStr(ATLOC, EMAIL.Length())
+ if (DOMAIN.Length() >= 2) then
+  TEST = TEST + 1
+ end if
+ if TEST == 3 then
+  return TRUE
+ else 
+  return FALSE
+ end if
+end method
+  
+   
+method ValidatePlayers(PLAYERS)
+ INVALIDS = new Queue()
+ loop I from 0 to 639
+  VALID = CheckEmail(PLAYERS[5][I])
+  if (NOT VALID) then
+   INVALIDS.enqueue(PLAYERS[2][I])
+  end if
+ end loop
+ return INVALIDS
+end method
+
+
+INVALIDS = ValidatePlayers(PLAYERS)
+COUNT = 0
+loop while NOT INVALIDS.isEmpty()
+ BLANK = Q.dequeue()
+ COUNT = COUNT + 1
+end loop
+output COUNT
+   
+   
