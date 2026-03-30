@@ -1,0 +1,21 @@
+input STR
+STR= STR.toLowerCase()
+loop COUNT from 0 to STR.length 
+ if STR[COUNT] == "" then
+ C = COUNT
+  loop while C <= STR.length 
+   STR[C] = STR[C+1]
+  end loop
+ end if
+end loop
+FLAG= true
+loop COUNT from 1 to STR.length
+ if STR[STR.length - COUNT] != STR[COUNT-1] then 
+ FLAG= false
+ end if
+end loop
+if FLAG== true then
+ output "TRUE"
+else
+ output "FALSE"
+end if

@@ -1,12 +1,12 @@
 input STR
 FLAG = true
 loop COUNT from 1 to STR.length
-if STR[STR.length - COUNT] != STR[COUNT-1] then
-FLAG = false
+ if STR[STR.length - COUNT] != STR[COUNT-1] then
+ FLAG = false
 end if
 end loop
 if FLAG == true then
-output "TRUE"
+ output "TRUE"
 else 
-output "FALSE"
+ output "FALSE"
 end if

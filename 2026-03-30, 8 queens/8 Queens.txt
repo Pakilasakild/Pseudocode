@@ -1,0 +1,77 @@
+N = 8
+BOARD = new Array()
+
+loop COUNT from 0 to N - 1
+ loop COUNTJ from 0 to N - 1
+  BOARD[COUNT][COUNTJ] = '.'
+ end loop
+end loop
+
+FOUND = solve(BOARD, 0, N)
+
+if (FOUND == false) then
+ output "No solution found."
+end if
+
+
+method solve(BOARD, COL, N)
+ if (COL == N) then
+  printBoard(BOARD, N)
+  return true
+ end if
+
+ loop COUNT from 0 to N - 1
+  if (isSafe(BOARD, COUNT, COL, N) == true) then
+   BOARD[COUNT][COL] = 'Q'
+
+   if (solve(BOARD, COL + 1, N) == true) then
+    return true
+   end if
+
+   BOARD[COUNT][COL] = '.'
+  end if
+ end loop
+
+ return false
+end method
+
+
+method isSafe(BOARD, ROW, COL, N)
+ loop COUNT from 0 to COL - 1
+  if (BOARD[ROW][COUNT] == 'Q') then
+   return false
+  end if
+ end loop
+
+ I = ROW
+ J = COL
+ loop (while I >= 0 AND J >= 0)
+  if (BOARD[I][J] == 'Q') then
+   return false
+  end if
+  I -= 1
+  J -= 1
+ end loop
+
+ I = ROW
+ J = COL
+ loop while (I <= N - 1 AND J >= 0)
+  if (BOARD[I][J] == 'Q') then
+   return false
+  end if
+  I += 1
+  J -= 1
+ end loop
+
+ return true
+end method
+
+
+method printBoard(BOARD, N)
+ loop COUNT from 0 to N - 1
+  loop COUNTJ from 0 to N - 1
+   output BOARD[COUNT][COUNTJ] + " "
+  end loop
+  output "\n"
+ end loop
+end method
