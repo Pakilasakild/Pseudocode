@@ -1,0 +1,32 @@
+HI = 0
+HJ = 0
+loop I from 0 to 7
+ loop J from 0 to 24
+  if A[I][J] > A[HI][HJ] then
+   HI = I
+   HJ = J
+  end if
+ end loop
+end loop
+
+if HI == 0 then
+ output "Monday"
+end if
+if HI == 1 then
+ output "Tuesday"
+end if
+if HI == 2 then
+ output "Wednesday"
+end if
+if HI == 3 then
+ output "Thursday"
+end if
+if HI == 4 then
+ output "Friday"
+end if
+if HI == 5 then
+ output "Saturday"
+end if
+if HI == 6 then
+ output "Sunday"
+end if
