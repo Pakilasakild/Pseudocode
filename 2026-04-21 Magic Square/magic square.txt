@@ -1,0 +1,65 @@
+11 a)
+
+method diagSum
+ SUM
+ loop I from 0 to 6
+  SUM += A[I][I]
+ end loop
+end method
+
+
+11 b)
+
+method diag2Sum
+ SUM
+ loop I from 6 to 0
+  SUM += A[I][6-I]
+ end loop
+end method
+
+FLAG = true
+COLSUM = 0
+ROWSUM = 0
+DIAGSUM = diagSum
+DIAG2SUM = diag2Sum
+
+
+if DIAG2SUM != DIAGSUM then
+ output "Not a magic square"
+ FLAG = false
+end if
+
+
+if FLAG then
+ loop I from 0 to n
+  loop J from 0 to n
+   COLSUM += A[I][J]
+  end loop
+  if (COLSUM != DIAGSUM) then
+   FLAG = false
+   break
+  end if
+ end loop
+end if
+
+if FLAG then
+ loop I from 0 to n
+  loop J from 0 to n
+   ROWSUM += A[J][I]
+  end loop
+  if (ROWSUM != DIAGSUM) then
+   FLAG = false
+   break
+  end if
+ end loop
+end if
+
+if FLAG then
+ output "It is a magic square"
+else 
+ output "It is not a magic square"
+end if
+
+
+11 c)
+https://imgur.com/a/DhSCu5U
